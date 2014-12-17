@@ -28,16 +28,16 @@ SOURCES = ${PROGRAMS:=.cpp}
 all: ${PROGRAMS}
 
 ${PROGRAMS}: ${SOURCES}
-  g++ ${CCFLAGS} -Wall -I../ -lrf24-bcm $@.cpp -o $@
+	g++ ${CCFLAGS} -Wall -I../ -lrf24-bcm $@.cpp -o $@
 
 clean:
-  rm -rf $(PROGRAMS)
+	rm -rf $(PROGRAMS)
 
 install: all
-  test -d $(prefix) || mkdir $(prefix)
-  test -d $(prefix)/bin || mkdir $(prefix)/bin
-  for prog in $(PROGRAMS); do \
-    install -m 0755 $$prog $(prefix)/bin; \
-  done
+	test -d $(prefix) || mkdir $(prefix)
+	test -d $(prefix)/bin || mkdir $(prefix)/bin
+	for prog in $(PROGRAMS); do \
+	  install -m 0755 $$prog $(prefix)/bin; \
+	done
 
 .PHONY: install
